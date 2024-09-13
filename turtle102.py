@@ -5,6 +5,7 @@ import turtle
 turtle.speed(10)
 turtle.width(3)
 turtle.bgcolor("black")
+turtle.goto(-100, 100)
 
 #vatiables
 size = 50
