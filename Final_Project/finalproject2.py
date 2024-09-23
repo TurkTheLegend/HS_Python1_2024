@@ -20,11 +20,20 @@ def store_password(username: str, password: str) -> None:
     print(f"Password for username '{username}' stored successfully!")
 
 
-def retrived_password(username: str) -> str:
+def retrive_password(username: str) -> tuple:
     if not username:
         print("Error: Username cannot be empty")
-        return None
-    pass
+        return None, None
+    if not os.path.exists('data.json'):
+        print("Error: No stored passwords found.")
+        return None, None
+    with open('data.json', 'r') as f:
+        data = json.load(f)
+    if usename in data:
+        return data[username][0], data[username][1] # Hashed
+    else:
+        print(f"Error: Username '{username}' not found.")
+        return None, None
 
 def clear_screen() -> None:
     os.system('clear')
