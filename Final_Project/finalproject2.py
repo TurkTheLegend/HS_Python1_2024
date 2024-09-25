@@ -1,8 +1,8 @@
 import os
 import json
+import base64
 import bcrypt
 from cryptography.fernet import Fernet
-import base64
 
 def get_data():
     if not os.path.exists('data.json'):
@@ -71,9 +71,13 @@ def main():
         choice = input("Enter your choice: ")
 
         if choice == '1':
-            username = input("Enter username for your master account: ")
+            username = input("Enter username for your master account: ").strip()
+            while username == "":
+                username = input("Enter username for your master account: ").strip()
             while True:
-                password = input("Enter master password: ")
+                password = input("Enter master password: ").strip()
+                while password == "":
+                    password = input("Enter master password: ").strip()
                 confirm_password = input("Confirm master password: ")
                 if password == confirm_password:
                     store_master_password(get_data(), username, password)
@@ -101,8 +105,12 @@ def main():
 
                     if choice == '1':
                         app_name = input("Enter application name: ")
-                        account_name = input("Enter account username: ")
-                        password = input("Enter password: ")
+                        account_name = input("Enter account username: ").strip()
+                        while account_name == "":
+                            account_name = input("Enter account username: ").strip()
+                        password = input("Enter password: ").strip()
+                        while password == "":
+                            password = input(("Enter password: ")).strip()
                         store_app_password(data, username, app_name, account_name, password, master_password)
 
                     elif choice == '2':
