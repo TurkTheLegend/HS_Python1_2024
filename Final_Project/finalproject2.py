@@ -89,14 +89,10 @@ def retrieve_app_password(data, username, app_name, account_name, master_passwor
         print("Credentials not found.")
     return None
 
-def clear_screen():
-    """Just clear screen"""
-    os.system('clear')
 
 def main():
     """Main function to handle user interaction and password management."""
     while True:
-        clear_screen()
         print("\nChoose an action:")
         print("1. Create Master Account")
         print("2. Login to Master Account")
@@ -118,6 +114,7 @@ def main():
                     break
                 else:
                     print("Passwords do not match. Please try again.")
+                    
 
         elif choice == "2":
             username = input("Enter username: ")
@@ -133,7 +130,6 @@ def main():
                 print("Login successful!")
 
                 while True:
-                    clear_screen()
                     print("\nChoose an action:")
                     print("1. Register new app account")
                     print("2. Retrieve app account password")
@@ -167,6 +163,7 @@ def main():
                             chosen_app = list(user_data["apps"].keys())[app_choice]
                         except (ValueError, IndexError):
                             print("Invalid application choice.")
+                            
                             continue
 
                         print("\nYour accounts for this application:")
@@ -186,10 +183,7 @@ def main():
                             data, username, chosen_app, chosen_account, master_password
                         )
                         if app_password:
-                            print(
-                                f"Password for {chosen_account} on {chosen_app}: {app_password}"
-                            )
-                            input("Press any key to continue")
+                            print(f"Password for {chosen_account} on {chosen_app}: {app_password}")
 
                     elif choice == "3":
                         break
@@ -198,6 +192,7 @@ def main():
 
             else:
                 print("Incorrect master password or username not found.")
+                
 
         elif choice == "3":
             break
