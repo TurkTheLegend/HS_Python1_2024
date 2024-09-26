@@ -89,10 +89,14 @@ def retrieve_app_password(data, username, app_name, account_name, master_passwor
         print("Credentials not found.")
     return None
 
+def clear_screen():
+    """Just clear screen"""
+    os.system('clear')
 
 def main():
     """Main function to handle user interaction and password management."""
     while True:
+        clear_screen()
         print("\nChoose an action:")
         print("1. Create Master Account")
         print("2. Login to Master Account")
@@ -129,6 +133,7 @@ def main():
                 print("Login successful!")
 
                 while True:
+                    clear_screen()
                     print("\nChoose an action:")
                     print("1. Register new app account")
                     print("2. Retrieve app account password")
@@ -184,6 +189,7 @@ def main():
                             print(
                                 f"Password for {chosen_account} on {chosen_app}: {app_password}"
                             )
+                            input("Press any key to continue")
 
                     elif choice == "3":
                         break
