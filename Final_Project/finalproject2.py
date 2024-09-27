@@ -114,7 +114,7 @@ def main():
                     password = input("Enter master password: ").strip()
                 confirm_password = input("Confirm master password: ")
                 if password == confirm_password:
-                    store_master_password(get_data(), username, password)
+                    store_master_password(load_data(), username, password)
                     break
                 else:
                     print("Passwords do not match. Please try again.")
@@ -122,7 +122,7 @@ def main():
         elif choice == "2":
             username = input("Enter username: ")
             master_password = input("Enter master password: ")
-            data = get_data()
+            data = load_data()
             user_data = data.get(username)
             if username in data and bcrypt.checkpw(
                 master_password.encode("utf-8"),
