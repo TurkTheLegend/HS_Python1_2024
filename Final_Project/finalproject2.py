@@ -14,7 +14,7 @@ def load_data() -> dict:
         return json.load(f)
 
 
-def save_data(data: dict):
+def save_data(data: dict) -> None:
     """Saves user data to a JSON file."""
     with open("data.json", "w") as f:
         json.dump(data, f, indent=4)
