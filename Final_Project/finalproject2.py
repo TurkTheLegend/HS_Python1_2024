@@ -20,7 +20,7 @@ def save_data(data: dict):
         json.dump(data, f, indent=4)
 
 
-def store_master_password(data: dict, username: str, password: str) -> None:
+def store_master_password(data: dict, username: str, password: str) -> None:    
     """Stores the master password securely."""
     salt = bcrypt.gensalt()
     hashed_password = bcrypt.hashpw(password.encode("utf-8"), salt)
